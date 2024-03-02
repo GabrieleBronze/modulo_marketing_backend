@@ -1,9 +1,11 @@
 package com.example.senac_marketing.modal;
 
+import jakarta.persistence.Entity;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-public class funcionario {
+@Entity
+public class funcionario extends  EntiyId{
 
     private String nome;
     private String CPF;
