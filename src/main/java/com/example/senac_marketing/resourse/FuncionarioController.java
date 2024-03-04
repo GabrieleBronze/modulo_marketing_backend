@@ -22,13 +22,13 @@ public class FuncionarioController {
     @PostMapping
     public ResponseEntity create(@RequestBody funcionario entity){
         funcionario save = serviceFuncionario.salvar(entity);
-        return ResponseEntity.created(URI.create("/api/consumidor/" + entity.getId())).body(save);
+        return ResponseEntity.created(URI.create("/api/funcionario/" + entity.getId())).body(save);
     }
 
     @GetMapping
     public  ResponseEntity findAll(){
-        List<funcionario> clientes =serviceFuncionario.buscaTodos();
-        return ResponseEntity.ok(clientes);
+        List<funcionario> funcionarios =serviceFuncionario.buscaTodos();
+        return ResponseEntity.ok(funcionarios);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
