@@ -37,11 +37,11 @@ public class funcionario extends  EntiyId{
     private LocalTime horaSaida;
     private String telefone;
 
-    private cargo Cargo;
-    private certificacao Certificacao;
+    private Cargo Cargo;
+    private Certificacao Certificacao;
     private filiacao Filiacao;
     private ExpAnterior ExpAnterior;
-    private dependente Dependente;
+    private Dependente Dependente;
     private DadoBancario DadoBancario;
 
     private escolaridade Escolaridade;
@@ -286,20 +286,25 @@ public class funcionario extends  EntiyId{
         this.telefone = telefone;
     }
 
-    public cargo getCargo() {
+
+    public com.example.senac_marketing.modal.Cargo getCargo() {
         return Cargo;
     }
 
-    public void setCargo(cargo cargo) {
+    public void setCargo(com.example.senac_marketing.modal.Cargo cargo) {
         Cargo = cargo;
     }
 
-    public certificacao getCertificacao() {
+    public com.example.senac_marketing.modal.Certificacao getCertificacao() {
         return Certificacao;
     }
 
-    public void setCertificacao(certificacao certificacao) {
+    public void setCertificacao(com.example.senac_marketing.modal.Certificacao certificacao) {
         Certificacao = certificacao;
+    }
+
+    public void setDependente(com.example.senac_marketing.modal.Dependente dependente) {
+        Dependente = dependente;
     }
 
     public filiacao getFiliacao() {
@@ -318,13 +323,6 @@ public class funcionario extends  EntiyId{
         ExpAnterior = expAnterior;
     }
 
-    public dependente getDependente() {
-        return Dependente;
-    }
-
-    public void setDependente(dependente dependente) {
-        Dependente = dependente;
-    }
 
     public com.example.senac_marketing.modal.DadoBancario getDadoBancario() {
         return DadoBancario;

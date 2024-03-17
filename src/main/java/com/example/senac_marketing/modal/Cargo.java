@@ -1,8 +1,16 @@
 package com.example.senac_marketing.modal;
 
-public class cargo {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+
+@Entity
+public class Cargo extends EntiyId{
+
+    @Column(name = "descricao", nullable = false)
     private String descricao;
+    @Column(name = "nivel", nullable = false)
     private String nivel;
+    @Column(name = "comissionado", nullable = false)
     private Boolean comissionado;
 
     public String getDescricao() {

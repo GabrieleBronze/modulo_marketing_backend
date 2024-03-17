@@ -1,27 +1,35 @@
 package com.example.senac_marketing.modal;
 
-import java.time.LocalDate;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
-public class ExpAnterior {
-    private String descricaoExperiencia;
-    private cargo Cargo;
+import java.time.LocalDate;
+@Entity
+
+public class ExpAnterior extends  EntiyId{
+    @Column(name = "descricao", nullable = false)
+    private String descricao;
+    @Column(name = "cargo", nullable = false)
+    private Cargo cargo;
+    @Column(name = "periodoInicio", nullable = false)
     private LocalDate periodoInicio;
+    @Column(name = "periodoFim", nullable = false)
     private LocalDate periodoFim;
 
-    public String getDescricaoExperiencia() {
-        return descricaoExperiencia;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricaoExperiencia(String descricaoExperiencia) {
-        this.descricaoExperiencia = descricaoExperiencia;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public cargo getCargo() {
-        return Cargo;
+    public Cargo getCargo() {
+        return cargo;
     }
 
-    public void setCargo(cargo cargo) {
-        Cargo = cargo;
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 
     public LocalDate getPeriodoInicio() {
@@ -43,8 +51,8 @@ public class ExpAnterior {
     @Override
     public String toString() {
         return "ExpAnterior{" +
-                "descricaoExperiencia='" + descricaoExperiencia + '\'' +
-                ", Cargo=" + Cargo +
+                "descricao='" + descricao + '\'' +
+                ", cargo=" + cargo +
                 ", periodoInicio=" + periodoInicio +
                 ", periodoFim=" + periodoFim +
                 '}';

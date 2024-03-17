@@ -1,10 +1,16 @@
 package com.example.senac_marketing.modal;
 
-import java.time.LocalDate;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
-public class certificacao {
+import java.time.LocalDate;
+@Entity
+public class Certificacao extends EntiyId{
+    @Column(name = "nome", nullable = false)
     private String nome;
+    @Column(name = "dataEmissao", nullable = false)
     private LocalDate dataEmissao;
+    @Column(name = "cargaHoraria", nullable = false)
     private Double cargaHoraria;
 
     public String getNome() {
