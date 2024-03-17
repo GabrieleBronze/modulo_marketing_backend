@@ -25,7 +25,7 @@ public class Campanha extends EntiyId{
 
     @ManyToOne
     @JoinColumn(name = "responsavel")
-    private responsavel responsavel;
+    private Responsavel responsavel;
 
     public String getNome() {
         return nome;
@@ -75,11 +75,11 @@ public class Campanha extends EntiyId{
         this.valor = valor;
     }
 
-    public com.example.senac_marketing.modal.responsavel getResponsavel() {
+    public Responsavel getResponsavel() {
         return responsavel;
     }
 
-    public void setResponsavel(com.example.senac_marketing.modal.responsavel responsavel) {
+    public void setResponsavel(Responsavel responsavel) {
         this.responsavel = responsavel;
     }
 

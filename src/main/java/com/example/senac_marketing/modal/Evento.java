@@ -4,10 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
-import java.util.List;
+
 @Entity
 public class Evento extends EntiyId{
     @Column(name = "nome",nullable = false)
@@ -28,7 +27,7 @@ public class Evento extends EntiyId{
     private String descricao;
     @ManyToOne
     @JoinColumn(name = "responsavel")
-    private responsavel responsavel;
+    private Responsavel responsavel;
 
     public String getNome() {
         return nome;
@@ -94,11 +93,11 @@ public class Evento extends EntiyId{
         this.descricao = descricao;
     }
 
-    public com.example.senac_marketing.modal.responsavel getResponsavel() {
+    public Responsavel getResponsavel() {
         return responsavel;
     }
 
-    public void setResponsavel(com.example.senac_marketing.modal.responsavel responsavel) {
+    public void setResponsavel(Responsavel responsavel) {
         this.responsavel = responsavel;
     }
 

@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 @Entity
-public class filiacao extends EntiyId{
+public class Filiacao extends EntiyId{
     @Column(name ="NomePai", nullable = false)
     private String NomePai;
     @Column(name = "NomeMae", nullable = false)
@@ -48,7 +48,7 @@ public class filiacao extends EntiyId{
 
     @Override
     public String toString() {
-        return "filiacao{" +
+        return "Filiacao{" +
                 "NomePai='" + NomePai + '\'' +
                 ", NomeMae='" + NomeMae + '\'' +
                 ", FonePai='" + FonePai + '\'' +

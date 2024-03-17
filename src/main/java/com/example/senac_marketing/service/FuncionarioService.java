@@ -1,6 +1,6 @@
 package com.example.senac_marketing.service;
 
-import com.example.senac_marketing.modal.funcionario;
+import com.example.senac_marketing.modal.Funcionario;
 import com.example.senac_marketing.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,22 +14,22 @@ public class FuncionarioService {
     @Autowired
     private FuncionarioRepository repositoryfuncionario;
 
-    public funcionario salvar(funcionario entity) {
+    public Funcionario salvar(Funcionario entity) {
         return repositoryfuncionario.save(entity);
     }
 
-    public List<funcionario> buscaTodos() {
+    public List<Funcionario> buscaTodos() {
         return repositoryfuncionario.findAll();
     }
 
-    public funcionario buscaPorId(Long id) {
+    public Funcionario buscaPorId(Long id) {
         return repositoryfuncionario.findById(id).orElse(null);
     }
 
-    public funcionario alterar(Long id, funcionario alterado) {
-        Optional<funcionario> encontrado = repositoryfuncionario.findById(id);
+    public Funcionario alterar(Long id, Funcionario alterado) {
+        Optional<Funcionario> encontrado = repositoryfuncionario.findById(id);
         if (encontrado.isPresent()) {
-            funcionario funcionario = encontrado.get();
+            Funcionario funcionario = encontrado.get();
             funcionario.setNome(alterado.getNome());
             funcionario.setDataNascimento(alterado.getDataNascimento());
             funcionario.setRG(alterado.getRG());

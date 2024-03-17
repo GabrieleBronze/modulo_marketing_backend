@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.time.LocalTime;
 @Entity
-public class funcionario extends  EntiyId{
+public class Funcionario extends  EntiyId{
 
     @Column(name = "nome", nullable = false)
     private String nome;
@@ -77,7 +77,7 @@ public class funcionario extends  EntiyId{
     private Certificacao Certificacao;
     @ManyToOne
     @JoinColumn(name = "Filiacao")
-    private filiacao Filiacao;
+    private Filiacao Filiacao;
     @ManyToOne
     @JoinColumn(name = "ExpAnterior")
     private ExpAnterior ExpAnterior;
@@ -367,11 +367,11 @@ public class funcionario extends  EntiyId{
         Dependente = dependente;
     }
 
-    public filiacao getFiliacao() {
+    public Filiacao getFiliacao() {
         return Filiacao;
     }
 
-    public void setFiliacao(filiacao filiacao) {
+    public void setFiliacao(Filiacao filiacao) {
         Filiacao = filiacao;
     }
 
@@ -459,7 +459,7 @@ public class funcionario extends  EntiyId{
 
     @Override
     public String toString() {
-        return "funcionario{" +
+        return "Funcionario{" +
                 "nome='" + nome + '\'' +
                 ", CPF='" + CPF + '\'' +
                 ", RG='" + RG + '\'' +
