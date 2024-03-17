@@ -1,56 +1,116 @@
 package com.example.senac_marketing.modal;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 @Entity
 public class funcionario extends  EntiyId{
 
+    @Column(name = "nome", nullable = false)
     private String nome;
+    @Column(name = "CPF", nullable = false)
     private String CPF;
+    @Column(name = "RG",nullable = false)
     private String RG;
+    @Column(name = "endereco", nullable = false)
     private String endereco;
+    @Column(name = "CTPS", nullable = false)
     private String CTPS;
+    @Column(name = "salario", nullable = false)
     private Double salario;
+    @Column(name = "cargaHoraria", nullable = false)
     private Integer cargaHoraria;
+    @Column(name = "tituloEleitor", nullable = false)
     private String tituloEleitor;
+    @Column(name = "cadastroReservista", nullable = false)
     private String cadastroReservista;
+    @Column(name = "dataNascimento", nullable = false)
     private LocalDate dataNascimento;
+    @Column(name = "PIS", nullable = false)
     private String PIS;
+    @Column(name = "registroProficional", nullable = false)
     private String registroProficional;
+    @Column(name = "email", nullable = false)
     private String email;
+    @Column(name = "sindicato", nullable = false)
     private String sindicato;
+    @Column(name = "setor", nullable = false)
     private String setor;
+    @Column(name = "CNH", nullable = false)
     private String CNH;
+    @Column(name = "dataAdmissao", nullable = false)
     private LocalDate dataAdmissao;
+    @Column(name = "racaCor", nullable = false)
     private String racaCor;
+    @Column(name = "religiao", nullable = false)
     private String religiao;
+    @Column(name = "doadorDeSangue", nullable = false)
     private Boolean doadorDeSangue;
+    @Column(name = "nacionalidade", nullable = false)
     private String nacionalidade;
+    @Column(name = "redeSocial", nullable = false)
     private String redeSocial;
+    @Column(name = "atuacao", nullable = false)
     private String atuacao;
+    @Column(name = "matricula", nullable = false)
     private String matricula;
+    @Column(name = "idioma", nullable = false)
     private String idioma;
+    @Column(name = "HoraExtra", nullable = false)
     private Integer horaExtra;
+    @Column(name = "horaEntrada", nullable = false)
     private LocalTime horaEntrada;
+    @Column(name = "horaSaida", nullable = false)
     private LocalTime horaSaida;
+    @Column(name = "telefone", nullable = false)
     private String telefone;
 
+    @ManyToOne
+    @JoinColumn(name = "Cargo")
     private Cargo Cargo;
+    @ManyToOne
+    @JoinColumn(name = "Certificacao")
     private Certificacao Certificacao;
+    @ManyToOne
+    @JoinColumn(name = "Filiacao")
     private filiacao Filiacao;
+    @ManyToOne
+    @JoinColumn(name = "ExpAnterior")
     private ExpAnterior ExpAnterior;
+    @ManyToOne
+    @JoinColumn(name = "Dependente")
     private Dependente Dependente;
+    @ManyToOne
+    @JoinColumn(name = "DadoBancario")
     private DadoBancario DadoBancario;
 
+    @ManyToOne
+    @JoinColumn(name = "Escolaridade")
     private escolaridade Escolaridade;
+    @ManyToOne
+    @JoinColumn(name = "EstadoCivil")
     private estadoCivil EstadoCivil;
+    @ManyToOne
+    @JoinColumn(name = "Genero")
     private genero Genero;
+    @ManyToOne
+    @JoinColumn(name = "ModalidadeContratual")
     private modalidadeContratual ModalidadeContratual;
+    @ManyToOne
+    @JoinColumn(name = "Status")
     private status Status;
+    @ManyToOne
+    @JoinColumn(name = "TipoConta")
     private tipoConta TipoConta;
+    @ManyToOne
+    @JoinColumn(name = "TipoSanguineo")
     private tipoSanguineo TipoSanguineo;
+    @ManyToOne
+    @JoinColumn(name = "Turno")
     private turno Turno;
 
 

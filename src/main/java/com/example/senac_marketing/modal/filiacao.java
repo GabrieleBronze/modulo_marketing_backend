@@ -1,9 +1,17 @@
 package com.example.senac_marketing.modal;
 
-public class filiacao {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+
+@Entity
+public class filiacao extends EntiyId{
+    @Column(name ="NomePai", nullable = false)
     private String NomePai;
+    @Column(name = "NomeMae", nullable = false)
     private String NomeMae;
+    @Column(name = "FonePai", nullable = false)
     private String FonePai;
+    @Column(name = "FoneMae", nullable = false)
     private String FoneMae;
 
     public String getNomePai() {
