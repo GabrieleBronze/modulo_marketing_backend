@@ -25,9 +25,6 @@ public class Evento extends EntiyId{
     private String conteudo;
     @Column(name = "descricao",nullable = false)
     private String descricao;
-    @ManyToOne
-    @JoinColumn(name = "responsavel")
-    private Responsavel responsavel;
 
     public String getNome() {
         return nome;
@@ -93,13 +90,6 @@ public class Evento extends EntiyId{
         this.descricao = descricao;
     }
 
-    public Responsavel getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Responsavel responsavel) {
-        this.responsavel = responsavel;
-    }
 
     @Override
     public String toString() {
@@ -112,7 +102,6 @@ public class Evento extends EntiyId{
                 ", custo=" + custo +
                 ", conteudo='" + conteudo + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", responsavel=" + responsavel +
                 '}';
     }
 }

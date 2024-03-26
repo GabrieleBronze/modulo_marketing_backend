@@ -12,7 +12,6 @@ public class Cargo extends EntiyId{
     private String nivel;
     @Column(name = "comissionado", nullable = false)
     private Boolean comissionado;
-
     public String getDescricao() {
         return descricao;
     }
@@ -36,6 +35,7 @@ public class Cargo extends EntiyId{
     public void setComissionado(Boolean comissionado) {
         this.comissionado = comissionado;
     }
+
 
     @Override
     public String toString() {

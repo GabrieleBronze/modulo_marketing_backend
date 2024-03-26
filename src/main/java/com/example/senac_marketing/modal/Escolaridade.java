@@ -1,5 +1,5 @@
 package com.example.senac_marketing.modal;
 
-public enum escolaridade {
+public enum Escolaridade {
     fundamentalUmI,  fundamentalUmC,  fundamentalDoisI,  fundamentalDoisC,  fundamentalMedioI, fundamentalMedioC
 }

@@ -1,5 +1,5 @@
 package com.example.senac_marketing.modal;
 
-public enum modalidadeContratual {
+public enum ModalidadeContratual {
     CLT, PessoaJuridica
 }

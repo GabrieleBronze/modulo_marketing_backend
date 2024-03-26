@@ -2,6 +2,8 @@ package com.example.senac_marketing.modal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 @Entity
@@ -9,7 +11,8 @@ import java.time.LocalDate;
 public class ExpAnterior extends  EntiyId{
     @Column(name = "descricao", nullable = false)
     private String descricao;
-    @Column(name = "cargo", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "Cargo")
     private Cargo cargo;
     @Column(name = "periodoInicio", nullable = false)
     private LocalDate periodoInicio;

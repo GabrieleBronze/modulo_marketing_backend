@@ -1,5 +1,5 @@
 package com.example.senac_marketing.modal;
 
-public enum tipoConta {
+public enum TipoConta {
     corrente, salario, poupanca
 }

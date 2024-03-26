@@ -23,9 +23,7 @@ public class Campanha extends EntiyId{
     @Column(name = "valor",nullable = false)
     private Double valor;
 
-    @ManyToOne
-    @JoinColumn(name = "responsavel")
-    private Responsavel responsavel;
+
 
     public String getNome() {
         return nome;
@@ -75,13 +73,6 @@ public class Campanha extends EntiyId{
         this.valor = valor;
     }
 
-    public Responsavel getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Responsavel responsavel) {
-        this.responsavel = responsavel;
-    }
 
     @Override
     public String toString() {
@@ -92,7 +83,6 @@ public class Campanha extends EntiyId{
                 ", descricao='" + descricao + '\'' +
                 ", conteudo='" + conteudo + '\'' +
                 ", valor=" + valor +
-                ", responsavel=" + responsavel +
                 '}';
     }
 }

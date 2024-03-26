@@ -30,35 +30,8 @@ public class FuncionarioService {
         Optional<Funcionario> encontrado = repositoryfuncionario.findById(id);
         if (encontrado.isPresent()) {
             Funcionario funcionario = encontrado.get();
-            funcionario.setNome(alterado.getNome());
-            funcionario.setDataNascimento(alterado.getDataNascimento());
-            funcionario.setRG(alterado.getRG());
-            funcionario.setCPF(alterado.getCPF());
-            funcionario.setTituloEleitor(alterado.getTituloEleitor());
-            funcionario.setCNH(alterado.getCNH());
-            funcionario.setPIS(alterado.getPIS());
-            funcionario.setCTPS(alterado.getCTPS());
-            funcionario.setNacionalidade(alterado.getNacionalidade());
-            funcionario.setRacaCor(alterado.getRacaCor());
-            funcionario.setEndereco(alterado.getEndereco());
-            funcionario.setTelefone(alterado.getTelefone());
-            funcionario.setEmail(alterado.getEmail());
-            funcionario.setRedeSocial(alterado.getRedeSocial());
-            funcionario.setIdioma(alterado.getIdioma());
-            funcionario.setReligiao(alterado.getReligiao());
-            funcionario.setDoadorDeSangue(alterado.getDoadorDeSangue());
-            funcionario.setCadastroReservista(alterado.getCadastroReservista());
-            funcionario.setRegistroProficional(alterado.getRegistroProficional());
-            funcionario.setMatricula(alterado.getMatricula());
-            funcionario.setAtuacao(alterado.getAtuacao());
-            funcionario.setSetor(alterado.getSetor());
-            funcionario.setDataAdmissao(alterado.getDataAdmissao());
-            funcionario.setSalario(alterado.getSalario());
-            funcionario.setCargaHoraria(alterado.getCargaHoraria());
-            funcionario.setHoraEntrada(alterado.getHoraEntrada());
-            funcionario.setHoraSaida(alterado.getHoraSaida());
-            funcionario.setHoraExtra(alterado.getHoraExtra());
-            funcionario.setSindicato(alterado.getSindicato());
+//            funcionario.setNome(alterado.getNome());
+
 
 
 

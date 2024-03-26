@@ -1,5 +1,5 @@
 package com.example.senac_marketing.modal;
 
-public enum genero {
+public enum Genero {
     masculino, feminino, outros
 }

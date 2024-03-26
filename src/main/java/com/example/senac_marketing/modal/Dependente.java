@@ -1,17 +1,18 @@
 package com.example.senac_marketing.modal;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 
-public class Dependente {
+@Entity
+public class Dependente extends EntiyId{
+
     @Column(name = "nome", nullable = false)
     private String nome;
-    @ManyToOne
-    @JoinColumn(name = "escolaridade")
-    private escolaridade Escolaridade;
+
     @Column(name = "dataNascimento", nullable = false)
     private LocalDate DataNascimento;
 
@@ -21,14 +22,6 @@ public class Dependente {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public escolaridade getEscolaridade() {
-        return Escolaridade;
-    }
-
-    public void setEscolaridade(escolaridade escolaridade) {
-        Escolaridade = escolaridade;
     }
 
     public LocalDate getDataNascimento() {
@@ -41,9 +34,8 @@ public class Dependente {
 
     @Override
     public String toString() {
-        return "dependente{" +
+        return "Dependente{" +
                 "nome='" + nome + '\'' +
-                ", Escolaridade=" + Escolaridade +
                 ", DataNascimento=" + DataNascimento +
                 '}';
     }

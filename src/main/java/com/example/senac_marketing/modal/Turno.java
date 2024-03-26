@@ -1,5 +1,5 @@
 package com.example.senac_marketing.modal;
 
-public enum turno {
+public enum Turno {
     matutino, vespertino, noturno
 }

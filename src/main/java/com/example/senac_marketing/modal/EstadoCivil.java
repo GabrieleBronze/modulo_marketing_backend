@@ -1,5 +1,5 @@
 package com.example.senac_marketing.modal;
 
-public enum estadoCivil {
+public enum EstadoCivil {
     casado, solteiro, divorciado, viuvo
 }
