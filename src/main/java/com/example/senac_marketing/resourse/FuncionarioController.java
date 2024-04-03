@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/funcionario")
+@RequestMapping("/api/funcionario")
 public class FuncionarioController {
 
 
@@ -27,7 +27,7 @@ public class FuncionarioController {
 
     @GetMapping
     public  ResponseEntity findAll(){
-        List<Funcionario> Funcionarios =serviceFuncionario.buscaTodos();
+        List<Funcionario> Funcionarios = serviceFuncionario.buscaTodos();
         return ResponseEntity.ok(Funcionarios);
     }
     @GetMapping("/{id}")
