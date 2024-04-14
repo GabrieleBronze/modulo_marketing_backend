@@ -1,9 +1,6 @@
 package com.example.senac_marketing.modal;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -75,15 +72,15 @@ public class Funcionario extends EntiyId{
 
     @ManyToOne
     @JoinColumn(name = "Certificacao")
-    private Certificacao certificacao;
+    private Certificacao certificacao; // lista?
 
     @ManyToOne
     @JoinColumn(name = "Filiacao")
-    private Filiacao filiacao;
+    private Filiacao filiacao; // lista?
 
     @ManyToOne
     @JoinColumn(name = "ExpAnterior")
-    private ExpAnterior expAnterior;
+    private ExpAnterior expAnterior; // lista?
 
     @ManyToOne
     @JoinColumn(name = "Dependente")

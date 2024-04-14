@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/funcionario")
+@RequestMapping("/api/funcionarios")
 public class FuncionarioController {
 
 
@@ -27,8 +27,8 @@ public class FuncionarioController {
 
     @GetMapping
     public  ResponseEntity findAll(){
-        List<Funcionario> Funcionarios = serviceFuncionario.buscaTodos();
-        return ResponseEntity.ok(Funcionarios);
+        List<Funcionario> funcionarios = serviceFuncionario.buscaTodos();
+        return ResponseEntity.ok(funcionarios);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
