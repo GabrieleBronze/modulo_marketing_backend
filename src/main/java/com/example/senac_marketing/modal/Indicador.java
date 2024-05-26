@@ -3,11 +3,9 @@ package com.example.senac_marketing.modal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
-import java.awt.*;
-import java.time.LocalDate;
-import java.util.List;
+//classes sãp no singular
 @Entity
-public class Indicadores extends  EntiyId{
+public class Indicador extends  EntiyId{
 
     @Column(name = "nome",nullable = false)
     private String nome;
@@ -42,7 +40,7 @@ public class Indicadores extends  EntiyId{
 
     @Override
     public String toString() {
-        return "Indicadores{" +
+        return "Indicador{" +
                 "nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", setor='" + setor + '\'' +
