@@ -34,7 +34,7 @@ public class QualidadeController {
         return ResponseEntity.ok().body(qualidades);
     }
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public  ResponseEntity remove(@PathVariable("id") Long id){
         serviceQualidade.remover(id);
         return ResponseEntity.noContent().build();
