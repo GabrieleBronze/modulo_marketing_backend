@@ -3,7 +3,6 @@ package com.example.senac_marketing.modal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
-//classes sãp no singular
 @Entity
 public class Indicador extends  EntiyId{
 

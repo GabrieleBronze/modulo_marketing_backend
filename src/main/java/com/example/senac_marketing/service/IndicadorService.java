@@ -12,36 +12,34 @@ import java.util.List;
 public class IndicadorService {
 
     @Autowired
-    private static IndicadorRepository indicadorRepository;
+    private  IndicadorRepository RepositoryIndicador;
 
-    public static Indicador salvar(Indicador entity) {
-        return indicadorRepository.save(entity);
-    }
+    public Indicador salvar(Indicador entity) { return RepositoryIndicador.save(entity);}
 
     public List<Indicador> buscaTodos() {
-        return indicadorRepository.findAll();
+        return RepositoryIndicador.findAll();
     }
 
-    public Indicador buscarPorId(Long id) {
-        return indicadorRepository.findById(id).orElse(null);
+    public Indicador buscaPorId(Long id) {
+        return RepositoryIndicador.findById(id).orElse(null);
     }
 
     public Indicador alterar(Long id, Indicador alterado) {
-        Optional<Indicador> encontrado = indicadorRepository.findById(id);
+        Optional<Indicador> encontrado = RepositoryIndicador.findById(id);
         if (encontrado.isPresent()) {
             Indicador indicador = encontrado.get();
             indicador.setNome(alterado.getNome());
             indicador.setDescricao(alterado.getDescricao());
             indicador.setSetor(alterado.getSetor());
 
-            return indicadorRepository.save(indicador);
+            return RepositoryIndicador.save(indicador);
         }
 
         return null;
     }
 
     public void remover(Long id) {
-        indicadorRepository.deleteById(id);
+        RepositoryIndicador.deleteById(id);
 
     }
 

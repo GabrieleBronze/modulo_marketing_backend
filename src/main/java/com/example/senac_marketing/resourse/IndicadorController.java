@@ -10,37 +10,37 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Indicador")
+@RequestMapping("/api/indicador")
 public class IndicadorController{
     @Autowired
 
-    private IndicadorService indicadorService;
+    private IndicadorService ServiceIndicador;
 
     @PostMapping
     public ResponseEntity create(@RequestBody Indicador entity){
-        Indicador save = IndicadorService.salvar(entity);
+        Indicador save = ServiceIndicador.salvar(entity);
         return ResponseEntity.created(URI.create("/api/indicador/" + entity.getId())).body(save);
     }
 
     @GetMapping
     public  ResponseEntity findAll(){
-        List<Indicador> indicador = indicadorService.buscaTodos();
+        List<Indicador> indicador = ServiceIndicador.buscaTodos();
         return ResponseEntity.ok(indicador);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
-        Indicador indicador = indicadorService.buscarPorId(id);
+        Indicador indicador = ServiceIndicador.buscaPorId(id);
         return ResponseEntity.ok().body(indicador);
     }
     @DeleteMapping("/{id}")
     public  ResponseEntity remove(@PathVariable("id") Long id){
-        indicadorService.remover(id);
+        ServiceIndicador.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public  ResponseEntity update(@PathVariable("id") Long id, @RequestBody Indicador entity){
-        Indicador alterado = indicadorService.alterar(id, entity);
+        Indicador alterado = ServiceIndicador.alterar(id, entity);
         return  ResponseEntity.ok().body(alterado);
     }
 
