@@ -11,39 +11,39 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/funcionarios")
-public class FuncionarioController {
+public class FuncionarioController extends AbstractController{
 
 
 
     @Autowired
-    private FuncionarioService serviceFuncionario;
+    private FuncionarioService ServiceFuncionario;
 
 
     @PostMapping
     public ResponseEntity create(@RequestBody Funcionario entity){
-        Funcionario save = serviceFuncionario.salvar(entity);
-        return ResponseEntity.created(URI.create("/api/funcionario/" + entity.getId())).body(save);
+        Funcionario save = ServiceFuncionario.salvar(entity);
+        return ResponseEntity.created(URI.create("/api/funcionarios/" + entity.getId())).body(save);
     }
 
     @GetMapping
     public  ResponseEntity findAll(){
-        List<Funcionario> funcionarios = serviceFuncionario.buscaTodos();
+        List<Funcionario> funcionarios = ServiceFuncionario.buscaTodos();
         return ResponseEntity.ok(funcionarios);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
-        Funcionario funcionarios = serviceFuncionario.buscaPorId(id);
+        Funcionario funcionarios = ServiceFuncionario.buscaPorId(id);
         return ResponseEntity.ok().body(funcionarios);
     }
     @DeleteMapping("/{id}")
     public  ResponseEntity remove(@PathVariable("id") Long id){
-        serviceFuncionario.remover(id);
+        ServiceFuncionario.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public  ResponseEntity update(@PathVariable("id") Long id, @RequestBody Funcionario entity){
-        Funcionario alterado = serviceFuncionario.alterar(id, entity);
+        Funcionario alterado = ServiceFuncionario.alterar(id, entity);
         return  ResponseEntity.ok().body(alterado);
     }
 

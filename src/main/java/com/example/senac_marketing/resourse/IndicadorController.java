@@ -10,8 +10,8 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/indicador")
-public class IndicadorController{
+@RequestMapping("/api/indicadores")
+public class IndicadorController extends AbstractController{
     @Autowired
 
     private IndicadorService ServiceIndicador;
@@ -19,7 +19,7 @@ public class IndicadorController{
     @PostMapping
     public ResponseEntity create(@RequestBody Indicador entity){
         Indicador save = ServiceIndicador.salvar(entity);
-        return ResponseEntity.created(URI.create("/api/indicador/" + entity.getId())).body(save);
+        return ResponseEntity.created(URI.create("/api/indicadores/" + entity.getId())).body(save);
     }
 
     @GetMapping

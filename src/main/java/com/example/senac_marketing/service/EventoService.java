@@ -1,8 +1,11 @@
 package com.example.senac_marketing.service;
 
+import com.example.senac_marketing.modal.Campanha;
 import com.example.senac_marketing.modal.Evento;
 import com.example.senac_marketing.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +22,11 @@ public class EventoService {
 
     public List<Evento> buscaTodos() {
         return RepositoryEvento.findAll();
+    }
+
+    // adicionar metodo filter
+    public Page<Evento> buscaTodos(String filter, Pageable pageable) {
+        return RepositoryEvento.findAll(filter, Evento.class, pageable);
     }
 
     public Evento buscaPorId(Long id) {

@@ -1,8 +1,11 @@
 package com.example.senac_marketing.service;
 
+import com.example.senac_marketing.modal.Evento;
 import com.example.senac_marketing.modal.Funcionario;
 import com.example.senac_marketing.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +23,11 @@ public class FuncionarioService {
 
     public List<Funcionario> buscaTodos() {
         return repositoryfuncionario.findAll();
+    }
+
+    // adicionar metodo filter
+    public Page<Funcionario> buscaTodos(String filter, Pageable pageable) {
+        return repositoryfuncionario.findAll(filter, Funcionario.class, pageable);
     }
 
     public Funcionario buscaPorId(Long id) {

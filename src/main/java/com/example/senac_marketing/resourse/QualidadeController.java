@@ -10,39 +10,39 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/qualidade")
-public class QualidadeController {
+@RequestMapping("/api/qualidades")
+public class QualidadeController extends AbstractController{
 
     @Autowired
-    private QualidadeService serviceQualidade;
+    private QualidadeService ServiceQualidade;
 
     @PostMapping
     public ResponseEntity create(@RequestBody Qualidade entity){
-        Qualidade save = serviceQualidade.salvar(entity);
-        return ResponseEntity.created(URI.create("/api/qualidade" + entity.getId())).body(save);
+        Qualidade save = ServiceQualidade.salvar(entity);
+        return ResponseEntity.created(URI.create("/api/qualidades" + entity.getId())).body(save);
     }
 
     @GetMapping
     public ResponseEntity findAll(){
-        List<Qualidade> qualidades = serviceQualidade.buscaTodos();
+        List<Qualidade> qualidades = ServiceQualidade.buscaTodos();
         return ResponseEntity.ok(qualidades);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable("id") Long id){
-        Qualidade qualidades = serviceQualidade.buscaPorId(id);
+        Qualidade qualidades = ServiceQualidade.buscaPorId(id);
         return ResponseEntity.ok().body(qualidades);
     }
 
     @DeleteMapping("/{id}")
     public  ResponseEntity remove(@PathVariable("id") Long id){
-        serviceQualidade.remover(id);
+        ServiceQualidade.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public ResponseEntity update(@PathVariable("id") Long id, @RequestBody Qualidade entity){
-        Qualidade alterado = serviceQualidade.alterar(id, entity);
+        Qualidade alterado = ServiceQualidade.alterar(id, entity);
         return ResponseEntity.ok().body(alterado);
     }
 

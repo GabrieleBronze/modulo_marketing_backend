@@ -1,8 +1,11 @@
 package com.example.senac_marketing.service;
 
+import com.example.senac_marketing.modal.Evento;
 import com.example.senac_marketing.modal.Indicador;
 import com.example.senac_marketing.repository.IndicadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.List;
@@ -19,6 +22,12 @@ public class IndicadorService {
     public List<Indicador> buscaTodos() {
         return RepositoryIndicador.findAll();
     }
+
+    // adicionar metodo filter
+    public Page<Indicador> buscaTodos(String filter, Pageable pageable) {
+        return RepositoryIndicador.findAll(filter, Indicador.class, pageable);
+    }
+
 
     public Indicador buscaPorId(Long id) {
         return RepositoryIndicador.findById(id).orElse(null);

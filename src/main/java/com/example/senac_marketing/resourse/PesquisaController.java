@@ -10,8 +10,8 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pesquisa")
-public class PesquisaController {
+@RequestMapping("/api/pesquisas")
+public class PesquisaController extends AbstractController{
 
     @Autowired
     private PesquisaService ServicePesquisa;
@@ -20,7 +20,7 @@ public class PesquisaController {
     @PostMapping
     public ResponseEntity create(@RequestBody Pesquisa entity){
         Pesquisa save = ServicePesquisa.salvar(entity);
-        return ResponseEntity.created(URI.create("/api/Pesquisa/" + entity.getId())).body(save);
+        return ResponseEntity.created(URI.create("/api/Pesquisas/" + entity.getId())).body(save);
     }
 
     @GetMapping
