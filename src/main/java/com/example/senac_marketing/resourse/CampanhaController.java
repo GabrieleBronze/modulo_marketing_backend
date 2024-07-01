@@ -29,22 +29,22 @@ public class CampanhaController extends AbstractController {
         return ResponseEntity.created(URI.create("/api/campanhas/" + entity.getId())).body(save);
     }
 
-    @GetMapping
-    public  ResponseEntity findAll(){
-        List<Campanha> campanha = serviceCampanha.buscaTodos();
-        return ResponseEntity.ok(campanha);
-    }
+//    @GetMapping
+//    public  ResponseEntity findAll(){
+//        List<Campanha> campanha = serviceCampanha.buscaTodos();
+//        return ResponseEntity.ok(campanha);
+//    }
 
 
 //    filtro DTO
-//@GetMapping
-//public ResponseEntity findAll(@RequestParam(required = false) String filter,
-//                              @RequestParam(defaultValue = "0") int page,
-//                              @RequestParam(defaultValue = "10") int size) {
-//    Page<Campanha> campanhas = serviceCampanha.buscaTodos(filter, PageRequest.of(page, size));
-//    Page<CampanhaDTO> campanhaDTOS = CampanhaDTO.fromEntity(campanhas);
-//    return ResponseEntity.ok(campanhaDTOS);
-//}
+@GetMapping
+public ResponseEntity findAll(@RequestParam(required = false) String filter,
+                              @RequestParam(defaultValue = "0") int page,
+                              @RequestParam(defaultValue = "10") int size) {
+    Page<Campanha> campanhas = serviceCampanha.buscaTodos(filter, PageRequest.of(page, size));
+    Page<CampanhaDTO> campanhaDTOS = CampanhaDTO.fromEntity(campanhas);
+    return ResponseEntity.ok(campanhaDTOS);
+}
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable("id") Long id){

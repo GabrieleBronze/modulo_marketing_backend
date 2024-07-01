@@ -28,9 +28,9 @@ public class CampanhaService {
     }
 
     // adicionar metodo filter
-//    public Page<Campanha> buscaTodos(String filter, Pageable pageable) {
-//        return repository.findAll(filter, Campanha.class, pageable);
-//    }
+    public Page<Campanha> buscaTodos(String filter, Pageable pageable) {
+        return repository.findAll(filter, Campanha.class, pageable);
+    }
 
     public Campanha buscaPorId(Long id) {
         return repository.findById(id).orElse(null);
