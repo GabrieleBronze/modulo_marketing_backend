@@ -15,27 +15,27 @@ import java.util.Optional;
 public class FuncionarioService {
 
     @Autowired
-    private FuncionarioRepository repositoryfuncionario;
+    private FuncionarioRepository repository;
 
     public Funcionario salvar(Funcionario entity) {
-        return repositoryfuncionario.save(entity);
+        return repository.save(entity);
     }
 
     public List<Funcionario> buscaTodos() {
-        return repositoryfuncionario.findAll();
+        return repository.findAll();
     }
 
     // adicionar metodo filter
-    public Page<Funcionario> buscaTodos(String filter, Pageable pageable) {
-        return repositoryfuncionario.findAll(filter, Funcionario.class, pageable);
-    }
+//    public Page<Funcionario> buscaTodos(String filter, Pageable pageable) {
+//        return repository.findAll(filter, Funcionario.class, pageable);
+//    }
 
     public Funcionario buscaPorId(Long id) {
-        return repositoryfuncionario.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public Funcionario alterar(Long id, Funcionario alterado) {
-        Optional<Funcionario> encontrado = repositoryfuncionario.findById(id);
+        Optional<Funcionario> encontrado = repository.findById(id);
         if (encontrado.isPresent()) {
             Funcionario funcionario = encontrado.get();
             funcionario.setNome(alterado.getNome());
@@ -91,13 +91,13 @@ public class FuncionarioService {
 
 
 
-            return repositoryfuncionario.save(funcionario);
+            return repository.save(funcionario);
         }
         return null;
     }
 
     public void remover(Long id) {
-        repositoryfuncionario.deleteById(id);
+        repository.deleteById(id);
 
 
     }

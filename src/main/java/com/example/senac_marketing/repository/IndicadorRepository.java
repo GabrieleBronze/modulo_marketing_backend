@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface IndicadorRepository extends JpaRepository<Indicador, Long>, CustomQuerydslPredicateExecutor<Indicador> {
+public interface IndicadorRepository extends JpaRepository<Indicador, Long> {
 }

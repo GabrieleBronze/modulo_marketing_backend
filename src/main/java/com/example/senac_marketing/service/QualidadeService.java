@@ -15,23 +15,23 @@ import java.util.Optional;
 @Service
 public class QualidadeService {
     @Autowired
-    private QualidadeRepository repositoryqualidade;
+    private QualidadeRepository repository;
 
-    public Qualidade salvar(Qualidade entity) {return repositoryqualidade.save(entity);}
+    public Qualidade salvar(Qualidade entity) {return repository.save(entity);}
 
-    public List<Qualidade> buscaTodos() {return repositoryqualidade.findAll(); }
+    public List<Qualidade> buscaTodos() {return repository.findAll(); }
 
     // adicionar metodo filter
-    public Page<Qualidade> buscaTodos(String filter, Pageable pageable) {
-        return repositoryqualidade.findAll(filter, Qualidade.class, pageable);
-    }
+//    public Page<Qualidade> buscaTodos(String filter, Pageable pageable) {
+//        return repository.findAll(filter, Qualidade.class, pageable);
+//    }
 
     public Qualidade buscaPorId(Long id) {
-        return repositoryqualidade.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public Qualidade alterar(Long id, Qualidade alterado) {
-        Optional<Qualidade> encontrado = repositoryqualidade.findById(id);
+        Optional<Qualidade> encontrado = repository.findById(id);
         if (encontrado.isPresent()) {
             Qualidade qualidade = encontrado.get();
             qualidade.setNome(alterado.getNome());
@@ -40,12 +40,12 @@ public class QualidadeService {
             qualidade.setSetor(alterado.getSetor());
             qualidade.setDescricao(alterado.getDescricao());
 
-            return repositoryqualidade.save(qualidade);
+            return repository.save(qualidade);
         }
         return null;
     }
 
     public void remover(Long id){
-            repositoryqualidade.deleteById(id);
+        repository.deleteById(id);
     }
 }

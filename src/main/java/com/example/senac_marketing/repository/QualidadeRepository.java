@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface QualidadeRepository extends JpaRepository<Qualidade, Long>, CustomQuerydslPredicateExecutor<Qualidade> {
+public interface QualidadeRepository extends JpaRepository<Qualidade, Long> {
 }
