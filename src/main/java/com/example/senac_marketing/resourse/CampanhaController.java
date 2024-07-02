@@ -29,12 +29,6 @@ public class CampanhaController extends AbstractController {
         return ResponseEntity.created(URI.create("/api/campanhas/" + entity.getId())).body(save);
     }
 
-//    @GetMapping
-//    public  ResponseEntity findAll(){
-//        List<Campanha> campanha = serviceCampanha.buscaTodos();
-//        return ResponseEntity.ok(campanha);
-//    }
-
 
 //    filtro DTO
 @GetMapping

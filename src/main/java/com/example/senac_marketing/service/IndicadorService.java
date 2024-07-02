@@ -24,9 +24,9 @@ public class IndicadorService {
     }
 
     // adicionar metodo filter
-//    public Page<Indicador> buscaTodos(String filter, Pageable pageable) {
-//        return repository.findAll(filter, Indicador.class, pageable);
-//    }
+    public Page<Indicador> buscaTodos(String filter, Pageable pageable) {
+        return repository.findAll(filter, Indicador.class, pageable);
+    }
 
 
     public Indicador buscaPorId(Long id) {

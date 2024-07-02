@@ -25,9 +25,9 @@ public class EventoService {
     }
 
     // adicionar metodo filter
-//    public Page<Evento> buscaTodos(String filter, Pageable pageable) {
-//        return repository.findAll(filter, Evento.class, pageable);
-//    }
+    public Page<Evento> buscaTodos(String filter, Pageable pageable) {
+        return repository.findAll(filter, Evento.class, pageable);
+    }
 
     public Evento buscaPorId(Long id) {
         return repository.findById(id).orElse(null);

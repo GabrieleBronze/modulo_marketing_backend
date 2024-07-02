@@ -27,9 +27,9 @@ public class PesquisaService {
     }
 
     // adicionar metodo filter
-//    public Page<Pesquisa> buscaTodos(String filter, Pageable pageable) {
-//        return repository.findAll(filter, Pesquisa.class, pageable);
-//    }
+    public Page<Pesquisa> buscaTodos(String filter, Pageable pageable) {
+        return repository.findAll(filter, Pesquisa.class, pageable);
+    }
 
     public Pesquisa buscaPorId(Long id) {
         return repository.findById(id).orElse(null);

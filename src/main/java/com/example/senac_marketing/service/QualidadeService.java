@@ -22,9 +22,9 @@ public class QualidadeService {
     public List<Qualidade> buscaTodos() {return repository.findAll(); }
 
     // adicionar metodo filter
-//    public Page<Qualidade> buscaTodos(String filter, Pageable pageable) {
-//        return repository.findAll(filter, Qualidade.class, pageable);
-//    }
+    public Page<Qualidade> buscaTodos(String filter, Pageable pageable) {
+        return repository.findAll(filter, Qualidade.class, pageable);
+    }
 
     public Qualidade buscaPorId(Long id) {
         return repository.findById(id).orElse(null);
