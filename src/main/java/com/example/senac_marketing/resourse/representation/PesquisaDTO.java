@@ -1,5 +1,6 @@
 package com.example.senac_marketing.resourse.representation;
 
+import com.example.senac_marketing.modal.Campanha;
 import com.example.senac_marketing.modal.Evento;
 import com.example.senac_marketing.modal.Pesquisa;
 import org.springframework.data.domain.Page;
@@ -75,6 +76,15 @@ public class PesquisaDTO {
         dto.setDescricao(pesquisa.getDescricao());
 
         return dto;
+    }
+    public Pesquisa toEntity() {
+        Pesquisa pesquisa = new Pesquisa();
+        pesquisa.setNome(this.getNome());
+        pesquisa.setPeriodoFim(this.getPeriodoFim());
+        pesquisa.setPeriodoInicio(this.getPeriodoInicio());
+        pesquisa.setSetor(this.getSetor());
+        pesquisa.setDescricao(this.getDescricao());
+        return pesquisa;
     }
     public static List<PesquisaDTO> fromEntity(List<Pesquisa> Pesquisa) {
         return Pesquisa.stream().map(PesquisaDTO::fromEntity).collect(Collectors.toList());
