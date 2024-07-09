@@ -32,6 +32,7 @@ public class IndicadorDTO {
     public  Indicador toEntity()  {
         Indicador indicador =  new Indicador();
         indicador.setNome(this.getNome());
+
         indicador.setDescricao((this.getDescricao()));
 
     }
