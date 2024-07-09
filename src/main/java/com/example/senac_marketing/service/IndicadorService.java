@@ -15,40 +15,40 @@ import java.util.List;
 public class IndicadorService {
 
     @Autowired
-    private  IndicadorRepository RepositoryIndicador;
+    private  IndicadorRepository repository;
 
-    public Indicador salvar(Indicador entity) { return RepositoryIndicador.save(entity);}
+    public Indicador salvar(Indicador entity) { return repository.save(entity);}
 
     public List<Indicador> buscaTodos() {
-        return RepositoryIndicador.findAll();
+        return repository.findAll();
     }
 
     // adicionar metodo filter
     public Page<Indicador> buscaTodos(String filter, Pageable pageable) {
-        return RepositoryIndicador.findAll(filter, Indicador.class, pageable);
+        return repository.findAll(filter, Indicador.class, pageable);
     }
 
 
     public Indicador buscaPorId(Long id) {
-        return RepositoryIndicador.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public Indicador alterar(Long id, Indicador alterado) {
-        Optional<Indicador> encontrado = RepositoryIndicador.findById(id);
+        Optional<Indicador> encontrado = repository.findById(id);
         if (encontrado.isPresent()) {
             Indicador indicador = encontrado.get();
             indicador.setNome(alterado.getNome());
             indicador.setDescricao(alterado.getDescricao());
             indicador.setSetor(alterado.getSetor());
 
-            return RepositoryIndicador.save(indicador);
+            return repository.save(indicador);
         }
 
         return null;
     }
 
     public void remover(Long id) {
-        RepositoryIndicador.deleteById(id);
+        repository.deleteById(id);
 
     }
 
