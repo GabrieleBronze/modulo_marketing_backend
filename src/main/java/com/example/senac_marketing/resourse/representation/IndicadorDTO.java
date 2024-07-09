@@ -35,5 +35,6 @@ public class IndicadorDTO {
 
         indicador.setDescricao((this.getDescricao()));
 
+
     }
 }
