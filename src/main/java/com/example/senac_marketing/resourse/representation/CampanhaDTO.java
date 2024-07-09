@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 public class CampanhaDTO extends AbstractController {
 
-
-
+// adicionando id pelo perfil da pamela para testar o front-end
+    private Long id;
     private String nome;
 
     private LocalDate periodoInicio;
@@ -25,9 +25,18 @@ public class CampanhaDTO extends AbstractController {
 
     private Double valor;
 
+
+
     // Getters e Setters
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -81,6 +90,7 @@ public class CampanhaDTO extends AbstractController {
     public static CampanhaDTO fromEntity(Campanha campanha) {
         CampanhaDTO dto = new CampanhaDTO();
         dto.setNome(campanha.getNome());
+        dto.setId(campanha.getId());
         dto.setPeriodoInicio(campanha.getPeriodoInicio());
         dto.setPeriodoFim(campanha.getPeriodoFim());
         dto.setDescricao(campanha.getDescricao());
@@ -91,6 +101,7 @@ public class CampanhaDTO extends AbstractController {
 
     public Campanha toEntity() {
         Campanha campanha = new Campanha();
+        campanha.setId(this.getId());
         campanha.setNome(this.getNome());
         campanha.setPeriodoFim(this.getPeriodoFim());
         campanha.setPeriodoInicio(this.getPeriodoInicio());
