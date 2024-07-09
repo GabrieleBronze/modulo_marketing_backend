@@ -105,12 +105,8 @@ public class CampanhaDTO extends AbstractController {
     }
 
     public static Page<CampanhaDTO> fromEntity(Page<Campanha> Campanha) {
-        List<CampanhaDTO> clientesFind = Campanha.stream().map(CampanhaDTO::fromEntity).collect(Collectors.toList());
-        return new PageImpl<>(clientesFind, Campanha.getPageable(), Campanha.getTotalElements());
+        List<CampanhaDTO> campanhas = Campanha.stream().map(CampanhaDTO::fromEntity).collect(Collectors.toList());
+        return new PageImpl<>(campanhas, Campanha.getPageable(), Campanha.getTotalElements());
     }
-
-
-
-
 
 }

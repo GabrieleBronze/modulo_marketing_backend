@@ -73,6 +73,7 @@ public class PesquisaDTO {
         dto.setPeriodoFim(pesquisa.getPeriodoFim());
         dto.setSetor(pesquisa.getSetor());
         dto.setDescricao(pesquisa.getDescricao());
+
         return dto;
     }
     public static List<PesquisaDTO> fromEntity(List<Pesquisa> Pesquisa) {
