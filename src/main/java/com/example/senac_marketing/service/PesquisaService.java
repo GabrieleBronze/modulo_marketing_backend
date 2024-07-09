@@ -16,27 +16,27 @@ import java.util.Optional;
 public class PesquisaService {
 
     @Autowired
-    private PesquisaRepository RepositoryPesquisa;
+    private PesquisaRepository repository;
 
     public Pesquisa salvar(Pesquisa entity) {
-        return RepositoryPesquisa.save(entity);
+        return repository.save(entity);
     }
 
     public List<Pesquisa> buscaTodos() {
-        return RepositoryPesquisa.findAll();
+        return repository.findAll();
     }
 
     // adicionar metodo filter
     public Page<Pesquisa> buscaTodos(String filter, Pageable pageable) {
-        return RepositoryPesquisa.findAll(filter, Pesquisa.class, pageable);
+        return repository.findAll(filter, Pesquisa.class, pageable);
     }
 
     public Pesquisa buscaPorId(Long id) {
-        return RepositoryPesquisa.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public Pesquisa alterar(Long id, Pesquisa alterado) {
-        Optional<Pesquisa> encontrado = RepositoryPesquisa.findById(id);
+        Optional<Pesquisa> encontrado = repository.findById(id);
         if (encontrado.isPresent()) {
             Pesquisa pesquisa = encontrado.get();
             pesquisa.setNome(alterado.getNome());
@@ -44,13 +44,13 @@ public class PesquisaService {
             pesquisa.setPeriodoFim(alterado.getPeriodoFim());
             pesquisa.setSetor(alterado.getSetor());
             pesquisa.setDescricao(alterado.getDescricao());
-            return RepositoryPesquisa.save(pesquisa);
+            return repository.save(pesquisa);
         }
         return null;
     }
 
     public void remover(Long id) {
-        RepositoryPesquisa.deleteById(id);
+        repository.deleteById(id);
 
 
     }
