@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,14 @@ public class CampanhaService {
 
 
     public Campanha salvar(Campanha entity) throws Exception{
+
+        if(entity.getPeriodoInicio().isBefore(LocalDate.now())){
+            throw new IllegalArgumentException("A data de inico nao pode ser anterior a data atual");
+        }
+        if(entity.getValor() < 0){
+            throw new IllegalArgumentException("O valor não pode ser negativo");
+        }
+
 
         return repository.save(entity);
     }

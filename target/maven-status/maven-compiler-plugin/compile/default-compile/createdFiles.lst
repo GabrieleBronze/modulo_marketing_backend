@@ -1,4 +1,5 @@
 com\example\senac_marketing\modal\Escolaridade.class
+com\example\senac_marketing\resourse\representation\EventoDTO.class
 com\example\senac_marketing\service\PesquisaService.class
 com\example\senac_marketing\repository\CampanhaRepository.class
 com\example\senac_marketing\modal\QCargo.class
@@ -41,11 +42,14 @@ com\example\senac_marketing\modal\TipoEvento.class
 com\example\senac_marketing\resourse\IndicadorController.class
 com\example\senac_marketing\modal\TipoConta.class
 com\example\senac_marketing\modal\Cargo.class
+com\example\senac_marketing\resourse\representation\IndicadorDTO.class
 com\example\senac_marketing\modal\QExpAnterior.class
 com\example\senac_marketing\modal\Genero.class
 com\example\senac_marketing\modal\QCertificacao.class
 com\example\senac_marketing\modal\Dependente.class
 com\example\senac_marketing\modal\TipoSanguineo.class
+com\example\senac_marketing\resourse\representation\PesquisaDTO.class
+com\example\senac_marketing\resourse\representation\QualidadeDTO.class
 com\example\senac_marketing\Enterprise\CustomQuerydslPredicateExecutor.class
 com\example\senac_marketing\modal\QQualidade.class
 com\example\senac_marketing\modal\TipoIndicador.class
