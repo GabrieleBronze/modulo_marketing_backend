@@ -1,8 +1,13 @@
 package com.example.senac_marketing.resourse;
 
+import com.example.senac_marketing.modal.Campanha;
 import com.example.senac_marketing.modal.Evento;
+import com.example.senac_marketing.resourse.representation.CampanhaDTO;
+import com.example.senac_marketing.resourse.representation.EventoDTO;
 import com.example.senac_marketing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +29,15 @@ public class EventoController extends AbstractController{
     }
 
     @GetMapping
-    public  ResponseEntity findAll(){
-        List<Evento> evento = ServiceEvento.buscaTodos();
-        return ResponseEntity.ok(evento);
+    public ResponseEntity findAll(@RequestParam(required = false) String filter,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "10") int size) {
+        Page<Evento> eventos = ServiceEvento.buscaTodos(filter, PageRequest.of(page, size));
+        Page<EventoDTO> eventoDTOs = EventoDTO.fromEntity(eventos);
+        return ResponseEntity.ok(eventoDTOs);
     }
+
+
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
         Evento evento = ServiceEvento.buscaPorId(id);

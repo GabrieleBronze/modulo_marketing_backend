@@ -4,6 +4,7 @@ import com.example.senac_marketing.modal.Campanha;
 import com.example.senac_marketing.repository.CampanhaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -13,26 +14,30 @@ import java.util.Optional;
 @Service
 public class CampanhaService {
     @Autowired
-    private CampanhaRepository RepositoryCampanha; //Esse R maiusculo é MEDONHO
+    private CampanhaRepository repository;
+
+
 
     public Campanha salvar(Campanha entity) throws Exception{
 
-        return RepositoryCampanha.save(entity);
+        return repository.save(entity);
     }
 
-    public List<Campanha> buscaTodos() {return RepositoryCampanha.findAll();}
+    public List<Campanha> buscaTodos() {
+        return repository.findAll();
+    }
 
     // adicionar metodo filter
     public Page<Campanha> buscaTodos(String filter, Pageable pageable) {
-        return RepositoryCampanha.findAll(filter, Campanha.class, pageable);
+        return repository.findAll(filter, Campanha.class, pageable);
     }
 
     public Campanha buscaPorId(Long id) {
-        return RepositoryCampanha.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public  Campanha alterar(Long id, Campanha alterado){
-        Optional<Campanha> encontrado = RepositoryCampanha.findById(id);
+        Optional<Campanha> encontrado = repository.findById(id);
         if (encontrado.isPresent()) {
             Campanha campanha = encontrado.get();
             campanha.setNome(alterado.getNome());
@@ -42,12 +47,12 @@ public class CampanhaService {
             campanha.setConteudo(alterado.getConteudo());
             campanha.setValor(alterado.getValor());
 
-            return RepositoryCampanha.save(campanha);
+            return repository.save(campanha);
         }
         return null;
     }
 
     public void remover(Long id){
-        RepositoryCampanha.deleteById(id);
+        repository.deleteById(id);
     }
 }
