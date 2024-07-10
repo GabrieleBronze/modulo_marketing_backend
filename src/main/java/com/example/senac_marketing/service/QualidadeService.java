@@ -23,7 +23,10 @@ public class QualidadeService {
             throw new IllegalArgumentException("A data de inico nao pode ser anterior a data atual");
         }
         if(!entity.getSetor().matches("^[\\p{L}\\s]+$")){
+
             throw new IllegalArgumentException("O nome do evento deve conter apenas letras.");
+
+
         }
 
         return repository.save(entity);}
