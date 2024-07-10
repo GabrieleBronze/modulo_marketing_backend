@@ -1,8 +1,13 @@
 package com.example.senac_marketing.resourse;
 
+import com.example.senac_marketing.modal.Evento;
 import com.example.senac_marketing.modal.Indicador;
+import com.example.senac_marketing.resourse.representation.EventoDTO;
+import com.example.senac_marketing.resourse.representation.IndicadorDTO;
 import com.example.senac_marketing.service.IndicadorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +28,12 @@ public class IndicadorController extends AbstractController{
     }
 
     @GetMapping
-    public  ResponseEntity findAll(){
-        List<Indicador> indicador = ServiceIndicador.buscaTodos();
-        return ResponseEntity.ok(indicador);
+    public ResponseEntity findAll(@RequestParam(required = false) String filter,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "10") int size) {
+        Page<Indicador> indicadores = ServiceIndicador.buscaTodos(filter, PageRequest.of(page, size));
+        Page<IndicadorDTO> indicadorDTOs = IndicadorDTO.fromEntity(indicadores);
+        return ResponseEntity.ok(indicadorDTOs);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){

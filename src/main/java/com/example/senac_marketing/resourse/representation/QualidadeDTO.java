@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class QualidadeDTO {
 
+    private Long id;
+
     private String nome;
 
     private LocalDate periodoInicio;
@@ -23,6 +25,14 @@ public class QualidadeDTO {
 
     // Getters e Setters
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -67,6 +77,7 @@ public class QualidadeDTO {
 
     public static QualidadeDTO fromEntity(Qualidade qualidade) {
         QualidadeDTO dto = new QualidadeDTO();
+        dto.setId(qualidade.getId());
         dto.setNome(qualidade.getNome());
         dto.setPeriodoInicio(qualidade.getPeriodoInicio());
         dto.setPeriodoFim(qualidade.getPeriodoFim());
@@ -77,6 +88,7 @@ public class QualidadeDTO {
     }
     public Qualidade toEntity() {
         Qualidade qualidade = new Qualidade();
+        qualidade.setId(this.getId());
         qualidade.setNome(this.getNome());
         qualidade.setPeriodoFim(this.getPeriodoFim());
         qualidade.setPeriodoInicio(this.getPeriodoInicio());
@@ -88,8 +100,8 @@ public class QualidadeDTO {
         return Qualidade.stream().map(QualidadeDTO::fromEntity).collect(Collectors.toList());
     }
     public static Page<QualidadeDTO> fromEntity(Page<Qualidade> Qualidade) {
-        List<QualidadeDTO> clientesFind = Qualidade.stream().map(QualidadeDTO::fromEntity).collect(Collectors.toList());
-        return new PageImpl<>(clientesFind, Qualidade.getPageable(), Qualidade.getTotalElements());
+        List<QualidadeDTO> qualidades = Qualidade.stream().map(QualidadeDTO::fromEntity).collect(Collectors.toList());
+        return new PageImpl<>(qualidades, Qualidade.getPageable(), Qualidade.getTotalElements());
     }
 
 

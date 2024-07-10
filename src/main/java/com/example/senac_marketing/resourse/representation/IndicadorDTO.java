@@ -10,9 +10,24 @@ import java.util.stream.Collectors;
 
 public class IndicadorDTO {
 
+    private Long id;
+
     private  String nome;
+
     private String descricao;
+
     private  String setor;
+
+    // Getters e Setters
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {return nome; }
 
@@ -26,22 +41,23 @@ public class IndicadorDTO {
 
     public void setSetor(String setor) {this.setor = setor; }
 
+
     public static IndicadorDTO fromEntity(Indicador indicador){
         IndicadorDTO dto = new IndicadorDTO();
+        dto.setId(indicador.getId());
         dto.setNome(indicador.getNome());
         dto.setDescricao(indicador.getDescricao());
         dto.setSetor(indicador.getSetor());
-
         return  dto;
     }
 
     public  Indicador toEntity()  {
         Indicador indicador =  new Indicador();
+        indicador.setId(this.getId());
         indicador.setNome(this.getNome());
         indicador.setSetor(this.getSetor());
         indicador.setDescricao(this.getDescricao());
         indicador.setDescricao((this.getDescricao()));
-
         return indicador;
     }
 
@@ -50,7 +66,7 @@ public class IndicadorDTO {
     }
 
     public static Page<IndicadorDTO> fromEntity(Page<Indicador> Indicador) {
-        List<IndicadorDTO> clientesFind = Indicador.stream().map(IndicadorDTO::fromEntity).collect(Collectors.toList());
-        return new PageImpl<>(clientesFind, Indicador.getPageable(), Indicador.getTotalElements());
+        List<IndicadorDTO> indicadores = Indicador.stream().map(IndicadorDTO::fromEntity).collect(Collectors.toList());
+        return new PageImpl<>(indicadores, Indicador.getPageable(), Indicador.getTotalElements());
     }
 }

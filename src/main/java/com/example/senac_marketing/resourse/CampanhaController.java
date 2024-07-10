@@ -36,8 +36,8 @@ public ResponseEntity findAll(@RequestParam(required = false) String filter,
                               @RequestParam(defaultValue = "0") int page,
                               @RequestParam(defaultValue = "10") int size) {
     Page<Campanha> campanhas = serviceCampanha.buscaTodos(filter, PageRequest.of(page, size));
-    Page<CampanhaDTO> campanhaDTOS = CampanhaDTO.fromEntity(campanhas);
-    return ResponseEntity.ok(campanhaDTOS);
+    Page<CampanhaDTO> campanhaDTOs = CampanhaDTO.fromEntity(campanhas);
+    return ResponseEntity.ok(campanhaDTOs);
 }
 
     @GetMapping("/{id}")

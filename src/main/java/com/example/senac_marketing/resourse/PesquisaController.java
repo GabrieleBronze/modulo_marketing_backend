@@ -1,8 +1,13 @@
 package com.example.senac_marketing.resourse;
 
+import com.example.senac_marketing.modal.Indicador;
 import com.example.senac_marketing.modal.Pesquisa;
+import com.example.senac_marketing.resourse.representation.IndicadorDTO;
+import com.example.senac_marketing.resourse.representation.PesquisaDTO;
 import com.example.senac_marketing.service.PesquisaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +29,12 @@ public class PesquisaController extends AbstractController{
     }
 
     @GetMapping
-    public  ResponseEntity findAll(){
-        List<Pesquisa> pesquisas = ServicePesquisa.buscaTodos();
-        return ResponseEntity.ok(pesquisas);
+    public ResponseEntity findAll(@RequestParam(required = false) String filter,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "10") int size) {
+        Page<Pesquisa> pesquisas = ServicePesquisa.buscaTodos(filter, PageRequest.of(page, size));
+        Page<PesquisaDTO> pesquisaDTOs = PesquisaDTO.fromEntity(pesquisas);
+        return ResponseEntity.ok(pesquisaDTOs);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){

@@ -13,6 +13,7 @@ public class CampanhaDTO extends AbstractController {
 
 // adicionando id pelo perfil da pamela para testar o front-end
     private Long id;
+
     private String nome;
 
     private LocalDate periodoInicio;
@@ -89,8 +90,8 @@ public class CampanhaDTO extends AbstractController {
     // Métodos de conversão
     public static CampanhaDTO fromEntity(Campanha campanha) {
         CampanhaDTO dto = new CampanhaDTO();
-        dto.setNome(campanha.getNome());
         dto.setId(campanha.getId());
+        dto.setNome(campanha.getNome());
         dto.setPeriodoInicio(campanha.getPeriodoInicio());
         dto.setPeriodoFim(campanha.getPeriodoFim());
         dto.setDescricao(campanha.getDescricao());

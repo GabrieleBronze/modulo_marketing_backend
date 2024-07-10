@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 
 public class PesquisaDTO {
 
+    private Long id;
+
     private String nome;
 
     private LocalDate periodoInicio;
@@ -24,6 +26,15 @@ public class PesquisaDTO {
 
 
     // Getters e Setters
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -69,6 +80,7 @@ public class PesquisaDTO {
 
     public static PesquisaDTO fromEntity(Pesquisa pesquisa) {
         PesquisaDTO dto = new PesquisaDTO();
+        dto.setId(pesquisa.getId());
         dto.setNome(pesquisa.getNome());
         dto.setPeriodoInicio(pesquisa.getPeriodoInicio());
         dto.setPeriodoFim(pesquisa.getPeriodoFim());
@@ -79,6 +91,7 @@ public class PesquisaDTO {
     }
     public Pesquisa toEntity() {
         Pesquisa pesquisa = new Pesquisa();
+        pesquisa.setId(this.getId());
         pesquisa.setNome(this.getNome());
         pesquisa.setPeriodoFim(this.getPeriodoFim());
         pesquisa.setPeriodoInicio(this.getPeriodoInicio());
@@ -90,8 +103,8 @@ public class PesquisaDTO {
         return Pesquisa.stream().map(PesquisaDTO::fromEntity).collect(Collectors.toList());
     }
     public static Page<PesquisaDTO> fromEntity(Page<Pesquisa> Pesquisa) {
-        List<PesquisaDTO> clientesFind = Pesquisa.stream().map(PesquisaDTO::fromEntity).collect(Collectors.toList());
-        return new PageImpl<>(clientesFind, Pesquisa.getPageable(), Pesquisa.getTotalElements());
+        List<PesquisaDTO> pesquisas = Pesquisa.stream().map(PesquisaDTO::fromEntity).collect(Collectors.toList());
+        return new PageImpl<>(pesquisas, Pesquisa.getPageable(), Pesquisa.getTotalElements());
     }
 
 }
