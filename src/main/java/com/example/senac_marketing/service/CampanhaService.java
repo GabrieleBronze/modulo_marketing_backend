@@ -28,6 +28,7 @@ public class CampanhaService {
             throw new IllegalArgumentException("O valor não pode ser negativo");
         }
         return repository.save(entity);
+
     }
 
 
