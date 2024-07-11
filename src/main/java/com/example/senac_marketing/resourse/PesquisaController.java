@@ -19,12 +19,12 @@ import java.util.List;
 public class PesquisaController extends AbstractController{
 
     @Autowired
-    private PesquisaService ServicePesquisa;
+    private PesquisaService servicePesquisa;
 
 
     @PostMapping
     public ResponseEntity create(@RequestBody Pesquisa entity){
-        Pesquisa save = ServicePesquisa.salvar(entity);
+        Pesquisa save = servicePesquisa.salvar(entity);
         return ResponseEntity.created(URI.create("/api/Pesquisas/" + entity.getId())).body(save);
     }
 
@@ -32,24 +32,24 @@ public class PesquisaController extends AbstractController{
     public ResponseEntity findAll(@RequestParam(required = false) String filter,
                                   @RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size) {
-        Page<Pesquisa> pesquisas = ServicePesquisa.buscaTodos(filter, PageRequest.of(page, size));
+        Page<Pesquisa> pesquisas = servicePesquisa.buscaTodos(filter, PageRequest.of(page, size));
         Page<PesquisaDTO> pesquisaDTOs = PesquisaDTO.fromEntity(pesquisas);
         return ResponseEntity.ok(pesquisaDTOs);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
-        Pesquisa pesquisas = ServicePesquisa.buscaPorId(id);
+        Pesquisa pesquisas = servicePesquisa.buscaPorId(id);
         return ResponseEntity.ok().body(pesquisas);
     }
     @DeleteMapping("/{id}")
     public  ResponseEntity remove(@PathVariable("id") Long id){
-        ServicePesquisa.remover(id);
+        servicePesquisa.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public  ResponseEntity update(@PathVariable("id") Long id, @RequestBody Pesquisa entity){
-        Pesquisa alterado = ServicePesquisa.alterar(id, entity);
+        Pesquisa alterado = servicePesquisa.alterar(id, entity);
         return  ResponseEntity.ok().body(alterado);
     }
 }

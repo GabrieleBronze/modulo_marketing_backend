@@ -13,7 +13,7 @@ public class CampanhaDTO extends AbstractController {
 
 // adicionando id pelo perfil da pamela para testar o front-end
     private Long id;
-
+// teste
     private String nome;
 
     private LocalDate periodoInicio;

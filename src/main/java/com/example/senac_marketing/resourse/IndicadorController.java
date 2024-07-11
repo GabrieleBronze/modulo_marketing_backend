@@ -19,11 +19,11 @@ import java.util.List;
 public class IndicadorController extends AbstractController{
     @Autowired
 
-    private IndicadorService ServiceIndicador;
+    private IndicadorService serviceIndicador;
 
     @PostMapping
     public ResponseEntity create(@RequestBody Indicador entity){
-        Indicador save = ServiceIndicador.salvar(entity);
+        Indicador save = serviceIndicador.salvar(entity);
         return ResponseEntity.created(URI.create("/api/indicadores/" + entity.getId())).body(save);
     }
 
@@ -31,24 +31,24 @@ public class IndicadorController extends AbstractController{
     public ResponseEntity findAll(@RequestParam(required = false) String filter,
                                   @RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size) {
-        Page<Indicador> indicadores = ServiceIndicador.buscaTodos(filter, PageRequest.of(page, size));
+        Page<Indicador> indicadores = serviceIndicador.buscaTodos(filter, PageRequest.of(page, size));
         Page<IndicadorDTO> indicadorDTOs = IndicadorDTO.fromEntity(indicadores);
         return ResponseEntity.ok(indicadorDTOs);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
-        Indicador indicador = ServiceIndicador.buscaPorId(id);
+        Indicador indicador = serviceIndicador.buscaPorId(id);
         return ResponseEntity.ok().body(indicador);
     }
     @DeleteMapping("/{id}")
     public  ResponseEntity remove(@PathVariable("id") Long id){
-        ServiceIndicador.remover(id);
+        serviceIndicador.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public  ResponseEntity update(@PathVariable("id") Long id, @RequestBody Indicador entity){
-        Indicador alterado = ServiceIndicador.alterar(id, entity);
+        Indicador alterado = serviceIndicador.alterar(id, entity);
         return  ResponseEntity.ok().body(alterado);
     }
 
