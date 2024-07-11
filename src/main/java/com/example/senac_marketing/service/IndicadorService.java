@@ -17,7 +17,12 @@ public class IndicadorService {
     @Autowired
     private  IndicadorRepository repository;
 
-    public Indicador salvar(Indicador entity) { return repository.save(entity);}
+    public Indicador salvar(Indicador entity) {
+
+        if(!entity.getSetor().matches("^[\\p{L}\\s]+$")){
+            throw new IllegalArgumentException("O nome do evento deve conter apenas letras.");
+        }
+        return repository.save(entity);}
 
     public List<Indicador> buscaTodos() {
         return repository.findAll();

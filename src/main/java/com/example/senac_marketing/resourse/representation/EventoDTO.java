@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class EventoDTO {
 
+    private Long id;
 
     private String nome;
 
@@ -30,6 +31,14 @@ public class EventoDTO {
 
     // Getters e Setters
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -98,6 +107,7 @@ public class EventoDTO {
     // Métodos de conversão
     public static EventoDTO fromEntity(Evento evento) {
         EventoDTO dto = new EventoDTO();
+        dto.setId(evento.getId());
         dto.setNome(evento.getNome());
         dto.setLocal(evento.getLocal());
         dto.setPeriodoInicio(evento.getPeriodoInicio());
@@ -111,6 +121,7 @@ public class EventoDTO {
 
     public Evento toEntity() {
         Evento evento = new Evento();
+        evento.setId(this.getId());
         evento.setNome(this.getNome());
         evento.setLocal(this.getLocal());
         evento.setPeriodoInicio(this.getPeriodoInicio());
@@ -127,8 +138,8 @@ public class EventoDTO {
     }
 
     public static Page<EventoDTO> fromEntity(Page<Evento> Evento) {
-        List<EventoDTO> clientesFind = Evento.stream().map(EventoDTO::fromEntity).collect(Collectors.toList());
-        return new PageImpl<>(clientesFind, Evento.getPageable(), Evento.getTotalElements());
+        List<EventoDTO> eventos = Evento.stream().map(EventoDTO::fromEntity).collect(Collectors.toList());
+        return new PageImpl<>(eventos, Evento.getPageable(), Evento.getTotalElements());
     }
 
 

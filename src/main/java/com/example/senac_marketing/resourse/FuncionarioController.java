@@ -16,34 +16,34 @@ public class FuncionarioController extends AbstractController{
 
 
     @Autowired
-    private FuncionarioService ServiceFuncionario;
+    private FuncionarioService serviceFuncionario;
 
 
     @PostMapping
     public ResponseEntity create(@RequestBody Funcionario entity){
-        Funcionario save = ServiceFuncionario.salvar(entity);
+        Funcionario save = serviceFuncionario.salvar(entity);
         return ResponseEntity.created(URI.create("/api/funcionarios/" + entity.getId())).body(save);
     }
 
     @GetMapping
     public  ResponseEntity findAll(){
-        List<Funcionario> funcionarios = ServiceFuncionario.buscaTodos();
+        List<Funcionario> funcionarios = serviceFuncionario.buscaTodos();
         return ResponseEntity.ok(funcionarios);
     }
     @GetMapping("/{id}")
     public  ResponseEntity findById(@PathVariable("id") Long id){
-        Funcionario funcionarios = ServiceFuncionario.buscaPorId(id);
+        Funcionario funcionarios = serviceFuncionario.buscaPorId(id);
         return ResponseEntity.ok().body(funcionarios);
     }
     @DeleteMapping("/{id}")
     public  ResponseEntity remove(@PathVariable("id") Long id){
-        ServiceFuncionario.remover(id);
+        serviceFuncionario.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
     public  ResponseEntity update(@PathVariable("id") Long id, @RequestBody Funcionario entity){
-        Funcionario alterado = ServiceFuncionario.alterar(id, entity);
+        Funcionario alterado = serviceFuncionario.alterar(id, entity);
         return  ResponseEntity.ok().body(alterado);
     }
 

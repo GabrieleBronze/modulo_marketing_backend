@@ -17,6 +17,13 @@ public class EventoService {
     private EventoRepository repository;
 
     public Evento salvar(Evento entity) {
+
+        if(entity.getValor() < 0){
+            throw new IllegalArgumentException("O valor não pode ser negativo");
+        }
+        if(entity.getCusto() < 0){
+            throw new IllegalArgumentException("O Custo não pode ser negativo");
+        }
         return repository.save(entity);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,18 @@ public class QualidadeService {
     @Autowired
     private QualidadeRepository repository;
 
-    public Qualidade salvar(Qualidade entity) {return repository.save(entity);}
+    public Qualidade salvar(Qualidade entity) {
+        if(entity.getPeriodoInicio().isBefore(LocalDate.now())){
+            throw new IllegalArgumentException("A data de inico nao pode ser anterior a data atual");
+        }
+        if(!entity.getSetor().matches("^[\\p{L}\\s]+$")){
+
+            throw new IllegalArgumentException("O nome do evento deve conter apenas letras.");
+
+
+        }
+
+        return repository.save(entity);}
 
     public List<Qualidade> buscaTodos() {return repository.findAll(); }
 

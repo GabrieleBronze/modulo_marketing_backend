@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,14 @@ public class PesquisaService {
     private PesquisaRepository repository;
 
     public Pesquisa salvar(Pesquisa entity) {
+
+        if(entity.getPeriodoInicio().isBefore(LocalDate.now())){
+            throw new IllegalArgumentException("A data de inico nao pode ser anterior a data atual");
+    }
+        if(!entity.getSetor().matches("^[\\p{L}\\s]+$")){
+            throw new IllegalArgumentException("O nome do evento deve conter apenas letras.");
+        }
+
         return repository.save(entity);
     }
 
