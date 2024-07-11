@@ -27,10 +27,9 @@ public class CampanhaService {
         if(entity.getValor() < 0){
             throw new IllegalArgumentException("O valor não pode ser negativo");
         }
-
-
         return repository.save(entity);
     }
+
 
     public List<Campanha> buscaTodos() {
         return repository.findAll();
